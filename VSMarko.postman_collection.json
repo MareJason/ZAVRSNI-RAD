@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "45572092-3fb7-47d6-85de-6cccf7f83a24",
+		"name": "VSMarko",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.google-analytics.com/j/collect?v=1&_v=j96&a=638162502&t=pageview&_s=1&dl=https://cypress.vivifyscrum-stage.com/login&dp=/login&ul=en-us&de=UTF-8&dt=Vivify Scrum&sd=24-bit&sr=1536x864&vp=852x754&je=0&_u=CACAAEABEAAAAC~&jid=1268149864&gjid=797432708&cid=1363930730.1650472692&tid=UA-53440952-4&_gid=846470439.1652112157&_r=1&_slc=1&z=505253783",
+					"protocol": "https",
+					"host": [
+						"www",
+						"google-analytics",
+						"com"
+					],
+					"path": [
+						"j",
+						"collect"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						},
+						{
+							"key": "_v",
+							"value": "j96"
+						},
+						{
+							"key": "a",
+							"value": "638162502"
+						},
+						{
+							"key": "t",
+							"value": "pageview"
+						},
+						{
+							"key": "_s",
+							"value": "1"
+						},
+						{
+							"key": "dl",
+							"value": "https://cypress.vivifyscrum-stage.com/login"
+						},
+						{
+							"key": "dp",
+							"value": "/login"
+						},
+						{
+							"key": "ul",
+							"value": "en-us"
+						},
+						{
+							"key": "de",
+							"value": "UTF-8"
+						},
+						{
+							"key": "dt",
+							"value": "Vivify Scrum"
+						},
+						{
+							"key": "sd",
+							"value": "24-bit"
+						},
+						{
+							"key": "sr",
+							"value": "1536x864"
+						},
+						{
+							"key": "vp",
+							"value": "852x754"
+						},
+						{
+							"key": "je",
+							"value": "0"
+						},
+						{
+							"key": "_u",
+							"value": "CACAAEABEAAAAC~"
+						},
+						{
+							"key": "jid",
+							"value": "1268149864"
+						},
+						{
+							"key": "gjid",
+							"value": "797432708"
+						},
+						{
+							"key": "cid",
+							"value": "1363930730.1650472692"
+						},
+						{
+							"key": "tid",
+							"value": "UA-53440952-4"
+						},
+						{
+							"key": "_gid",
+							"value": "846470439.1652112157"
+						},
+						{
+							"key": "_r",
+							"value": "1"
+						},
+						{
+							"key": "_slc",
+							"value": "1"
+						},
+						{
+							"key": "z",
+							"value": "505253783"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user logged in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json()\r",
+							"pm.environment.set(\"token vivify\", jsonData.token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"mareljapk23@yahoo.com\",\r\n  \"password\": \"mareljapk23\",\r\n  \"g-recaptcha-response\": \"03AGdBq24a4E8YOCoG8MOZjbKcwTHyHl0gp1o2IwbUt8hkYKXMM9c1hfXKa4ZxCOyAnW4jFI6XIOGw-7gyV87fhpUy04Z485rgVgbpwjBW_QbuCpTYF4mvw8GUv8_LQSPw7MgN-7Xpp2RJrOmLj_Qp8bzWl_0PuOPUBRAlV13vdWIpYrheTWXJrQXTH0ChtQP2CF3KggafRc2mLlQ259tsNqvi63XtPOfaPZT3Wzv6TDLn2dsMaoHYwp3khxK2n_qOCXOz2ZnaUcSjnV53RxeBEM8j5wbaBZg-wkokgEdQm_---fXhoXYWcoHSR8rHPaGbKwCefZcIengmrUkorzSONfxWOpmXnO2OJg1Lpn5MIm9zYiVB6sakXnvaqU_IO6OeuPE6FnNyVgbukfvu97TjQI-9Gdme4WPUi9n8CkqJkvtNykzO7G75GsXCZtpEhVql4qeeqx5wNeHK2rWFN-EhuK6KwzPQyPkscg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.vivifyscrum-stage.com/api/v2/login",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vivifyscrum-stage",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 5000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token vivify}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mare",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.vivifyscrum-stage.com/api/v2/organizations",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vivifyscrum-stage",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"organizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/v2/organizations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"organizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mare",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/v2/organizations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"organizations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
